@@ -61,13 +61,26 @@ Test commands used for running stress-ng and cyclictest together
    stress-ng --cpu-method=all -c 4 &
    cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
 
-The latencies observed with this SDK are summarized below:
+The following summarizes the latencies observed using the yocto based
+default SDK image using the SK-AM62B-P1_ reference board:
+
+.. _SK-AM62B-P1: https://www.ti.com/tool/SK-AM62B-P1
+
+.. note::
+
+   A known issue in this SDK release is affecting this benchmark.
+   Using OP-TEE's PRNG drivers rather than the hardware accelerated TRNG
+   drivers restores the context switch latencies to the values you see
+   here.
+
+   More information on switching to the PRNG drivers can be found in the
+   Foundational Components section, here :ref:`building-optee-with-prng`
 
 .. csv-table::
    :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
 
-   "Minimum (usec)","5","5","4","4"
-   "Average (usec)","7","5","6","6"
-   "Maximum (usec)","66","41","73","70"
+   "Minimum (usec)","5","5","5","5"
+   "Average (usec)","6","6","6","6"
+   "Maximum (usec)","62","46","47","52"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
