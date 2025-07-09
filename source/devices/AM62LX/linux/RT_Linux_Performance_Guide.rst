@@ -56,13 +56,24 @@ Test commands used for running stress-ng and cyclictest together
    stress-ng --cpu-method=all -c 4 &
    cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
 
-The latencies observed with this SDK are summarized below:
+The following summarizes the latencies observed using the yocto based
+default SDK image:
+
+.. note::
+
+   A known issue in this SDK release is affecting this benchmark.
+   Using OP-TEEs PRNG drivers rather than the hardware accelerated TRNG
+   drivers restores the context switch latencies to the values you see
+   here.
+
+   More information on switching to the PRNG drivers can be found in the
+   Foundational Components section, here :ref:`building-optee-with-prng`
 
 .. csv-table::
    :header: "Latencies","CPU 0","CPU 1"
 
    "Minimum (us)","5","5"
-   "Average (us)","6","8"
-   "Maximum (us)","47","53"
+   "Average (us)","8","7"
+   "Maximum (us)","57","48"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
