@@ -37,6 +37,12 @@ instances to a codec or an HDMI bridge.
 
 Generic commands and instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+    .. note::
+
+        Only Audio playback with static DAC confgiuration is supported.
+        Recording feature is not supported.
 
 Most of the boards have simple audio setup which means we have one
 sound card with one playback and one capture PCM.
@@ -880,7 +886,7 @@ Additional Information
     #. `Interfacing DRA7xx Audio to Analog Codecs
        <http://www.ti.com/lit/an/sprac09a/sprac09a.pdf>`__
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family', 'AM62LX_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM62AX_family', 'AM62DX_family', 'AM62PX_family', 'AM62LX_family')
 
     #. `Tools and Techniques for Audio Debugging
        <https://www.ti.com/lit/an/sprac10/sprac10.pdf>`__
@@ -905,3 +911,7 @@ Additional Information
        Differential Input/Output
        <http://www.ti.com/lit/ds/symlink/pcm3168a.pdf>`__
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+    #. `TAD52512 - High-performance stereo audio DAC
+       <https://www.ti.com/lit/ds/symlink/tad5212.pdf>`__

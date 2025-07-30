@@ -445,7 +445,34 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1058.45 (min 964.24, max 1158.01)","88.12 (min 79.19, max 99.75)"
 
+.. rubric::  TCP Bidirectional Throughput Interrupt Pacing
+	:name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
+.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+	:header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+
+	"netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1196.36","99.96"
+
+.. rubric::  UDP Throughput
+   :name: CPSW2g-udp-throughput-0-loss
+
+.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+	:header: "UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+
+	"64","40.58","80.00","79.03"
+	"128","79.43","78.00","77.99"
+	"256","154.99","62.00","77.67"
+	"1024","577.17","70.00","91.40"
+	"1472","589.21","49.00","85.92"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+	:header: "UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+
+	"64","2.92","6.00","0.18"
+	"128","6.96","7.00","7.83"
+	"256","15.56","8.00","1.2"
+	"1024","61.44","8.00","8.39"
+	"1472","88.32","8.00","8.17"
 
 ICSSG Ethernet Driver
 ^^^^^^^^^^^^^^^^^^^^^
@@ -456,7 +483,7 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG TCP Bidirectional Throughput
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","889.39 (min 356.03, max 1078.23)","85.19 (min 72.62, max 99.42)"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1178","99.98"
 
 
 
@@ -467,7 +494,7 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","640.11 (min 185.59, max 1029.32)","55.82 (min 28.49, max 79.66)"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1198","99.41"
 
 
 
@@ -476,13 +503,13 @@ ICSSG Ethernet Driver
    :name: udp-egress-throughput-0-loss
 
 .. csv-table:: ICSSG UDP Egress Throughput 0 loss
-    :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "UDP Datagram Size(bytes)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","13.33 (min 6.27, max 22.35)","55.67 (min 44.00, max 79.00)","68.09 (min 58.78, max 86.60)"
-    "128","82.00","55.06 (min 29.23, max 79.35)","62.20 (min 43.00, max 77.00)","77.28 (min 60.07, max 89.36)"
-    "256","210.00","123.93 (min 70.38, max 154.02)","63.00 (min 42.00, max 75.00)","78.99 (min 58.73, max 89.81)"
-    "1024","978.00","292.51 (min 21.12, max 581.33)","36.75 (min 3.00, max 71.00)","46.82 (min 2.71, max 91.06)"
-    "1518","1472.00","685.55 (min 585.79, max 792.91)","57.25 (min 48.00, max 67.00)","87.26 (min 84.56, max 89.28)"
+    "64","41.45","48.87","77.24"
+    "128","81.40","59.85","76.77"
+    "256","156.24","65.53","76.00"
+    "1024","592.23","69.44","74.74"
+    "1472","834.46","68.89","74.10"
 
 
 
@@ -491,15 +518,31 @@ ICSSG Ethernet Driver
    :name: udp-ingress-throughput-0-loss
 
 .. csv-table:: ICSSG UDP Ingress Throughput 0 loss
-    :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
+    :header: "UDP Datagram Size(bytes)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
 
-    "64","","1.44 (min 1.33, max 1.54)","3.00","0.10"
-    "128","82.00","1.97","3.00","3.07 (min 2.68, max 3.46)"
-    "256","210.00","9.27 (min 8.06, max 10.24)","5.00","3.87 (min 0.20, max 7.68)"
-    "1024","978.00","39.84 (min 37.56, max 40.96)","5.00","5.38 (min 2.89, max 7.92)"
-    "1472","1472.00","167.00 (min 56.52, max 374.79)","14.25 (min 5.00, max 32.00)","17.31 (min 0.25, max 49.37)"
+    "64","1.54","3.00","0.10"
+    "128","4.81","5.00","0.23"
+    "256","10.24","5.00","7.35"
+    "1024","40.14","5.00","3.28"
+    "1472","374.79","32","49.37"
 
+.. rubric:: Switch Mode
+   :name: icssg-switch-mode
 
+.. csv-table:: ICSSG Switch Mode Forwarding
+   :header: "Mode","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (SENDER)","am64xx-hsevm: CPU Load % (FORWARDING)","am64xx-hsevm: CPU Load % (RECIEVER)"
+
+   "Switch with HW Offload","929","94.07","0","83.73"
+   "Switch with SW Offload","915","96.23","30","85.38"
+
+.. rubric:: HSR Mode
+   :name: icssg-hsr-mode
+
+.. csv-table:: ICSSG HSR Mode Forwarding
+   :header: "Mode","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (SENDER)","am64xx-hsevm: CPU Load % (FORWARDING)","am64xx-hsevm: CPU Load % (RECIEVER)"
+
+   "HSR with HW Offload","466","62.01","0","69.11"
+   "HSR with SW Offload","387","65","29.96","70"
 
 |
 
@@ -739,5 +782,44 @@ Listed for each algorithm are the code snippets used to run each benchmark test.
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
+
+|
+
+RP Message Inter-Processor Communication (IPC) Latency
+------------------------------------------------------
+
+RP Message latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+RP Message latency is the delay measured from sending a round trip echo message from 
+a Linux application to a remote processor and back. The following measurements use 
+a RP message length of 1 byte and 490 bytes for comparison.
+
+The Linux user space application `rpmsg_char_benchmark <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/>`__ captures these latency values.
+
+Test commands used for running IPC latency tests:
+
+.. code:: console
+
+   rpmsg_char_benchmark -r 2 -n 100000 -m 1 & chrt -f -p 80 $!
+
+Latencies reported:
+
+
+.. csv-table::
+   :header: "Remote Processor","Message Size (in bytes)","Average round trip (usecs)","Max round trip (usecs)"
+
+   "R5F0_0","1","32","205"
+   "R5F0_0","490","162","272"
+   "M4F","1","41","186"
+   "M4F","490","301","446"
+
+.. image:: img/R5_0_0_m1_ipc_latency.png
+
+.. image:: img/R5_0_0_m490_ipc_latency.png
+
+.. image:: img/m4_0_m1_ipc_latency.png
+
+.. image:: img/m4_0_m490_ipc_latency.png
 
 |
