@@ -3,8 +3,6 @@
 OP-TEE
 ======
 
-.. rubric:: Overview
-
 OP-TEE is a Trusted Execution Environment (TEE) designed as a companion to a
 non-secure Linux kernel running on Arm Cortex-A cores using the TrustZone technology.
 
@@ -16,7 +14,8 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 
 |
 
-.. rubric:: Getting the OP-TEE Source Code
+Getting the OP-TEE Source Code
+------------------------------
 
 The pre-built OPTEE binary should be packaged in TI Processor SDK: <path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl32.bin.
 Use this binary since it has been tested with TI Processor SDK.
@@ -32,13 +31,15 @@ Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
 
 |
 
-.. rubric:: Setting up the toolchain paths
+Setting up the toolchain paths
+------------------------------
 
 .. include:: Overview/GCC_ToolChain.rst
    :start-after: .. start_include_yocto_toolchain_host_setup
    :end-before: .. end_include_yocto_toolchain_host_setup
 
-.. rubric:: Building OP-TEE OS
+Building OP-TEE OS
+------------------
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4','J742S2')
 
@@ -46,19 +47,22 @@ Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
 
         $ export CFG_CONSOLE_UART=0x8
 
-* Building the OPTEE image
+Building the OP-TEE image
+*************************
 
   .. parsed-literal::
 
      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
-* Building the OPTEE image with debug parameters
+Building the OP-TEE image with debug parameters
+***********************************************
 
   .. parsed-literal::
 
      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
 
-.. rubric:: Secure Storage with RPMB (For HS)
+Secure Storage with RPMB (For HS)
+*********************************
 
 OP-TEE provides secure storage functionality. TI SoCs with HS configuration have a
 KEK embedded in them that is programmed across OP-TEE instances that are distributed
@@ -88,7 +92,8 @@ E.g. For enabling hybrid mode of RPMB along with REE_FS
 OPTEE-client also needs to be updated to enable the use of real
 emmc instead of the virtual emmc that is enabled by default
 
-.. rubric:: Getting OP-TEE Client source code
+Getting OP-TEE Client source code
+---------------------------------
 
 .. code-block:: console
 
@@ -105,7 +110,8 @@ in `out/export/usr` folder
 
 |
 
-.. rubric:: Building u-boot with OP-TEE OS
+Building u-boot with OP-TEE OS
+------------------------------
 
 As of Processor SDK 9.0, the signing functionality earlier provided by the TI Security Development Package, has
 been integrated within U-Boot itself. This means tee-pager_v2.bin does not need to be signed before being packaged
