@@ -61,6 +61,21 @@ Building the OP-TEE image with debug parameters
 
      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
 
+.. _building-optee-with-prng:
+
+Building OP-TEE with Pseudo RNG drivers
+***************************************
+
+In certain highly specific use-cases the true RNG drivers could have a
+detrimental effect to the overall system latency. Using the
+``CFG_WITH_SOFTWARE_PRNG`` flag to use OP-TEE's Pseudo RNG drivers as a source
+of entropy can work around these issues.
+
+.. parsed-literal::
+
+   $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y
+
+
 Secure Storage with RPMB (For HS)
 *********************************
 
