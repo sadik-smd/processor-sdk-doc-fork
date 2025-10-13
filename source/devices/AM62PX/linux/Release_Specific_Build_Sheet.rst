@@ -171,7 +171,7 @@ The support status is indicated by the following codes:
    Video Processing Unit,Cnm Wave521CL,,Yes,,
    Graphics Processing Unit,IMG BXS,,Yes,NA,No
    On-Die Temperature sensor,,,Yes,NA,NA
-   On-Chip Debug,,,NA,NA,NA
+   On-Chip Debug,,,Yes,NA,NA
    Crypto Accelerator (SA3UL),Advanced Encryption Standard (AES),AES-CBC,Yes,NA,NA
    ,,AES-ECB,Yes,NA,NA
    ,SHA/MD5 Crypto Hardware-Accelerated Module (SHA/MD5),SHA-256,Yes,NA,NA
