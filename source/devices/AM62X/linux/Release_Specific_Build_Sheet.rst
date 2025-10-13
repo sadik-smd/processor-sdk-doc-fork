@@ -166,7 +166,7 @@ The support status is indicated by the following codes:
    ,Dual Display,,Yes,No,No,No
    Graphics Processing Unit,,,Yes,NA,NA,No
    On-Die Temperature sensor,,,Yes,NA,NA,No
-   On-Chip Debug,,,NA,NA,NA,NA
+   On-Chip Debug,,,Yes,NA,NA,NA
    Crypto Accelerator (SA3UL),Advanced Encryption Standard (AES),AES-CBC,Yes,NA,NA,No
    ,,AES-ECB,Yes,NA,NA,No
    ,SHA/MD5 Crypto Hardware-Accelerated Module (SHA/MD5),SHA-256,Yes,NA,NA,No
