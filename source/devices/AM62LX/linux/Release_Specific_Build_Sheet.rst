@@ -24,39 +24,43 @@ The support status is indicated by the following codes:
    Initialization,I2C Bootloader Operation,,No,No
    ,SPI Bootloader Operation,,No,No
    ,QSPI Bootloader Operation,NOR,Yes,No
-   ,NAND,No,SDK11.2
+   ,,NAND,No,SDK11.2
    ,OSPI Bootloader Operation,NOR,Yes,SDK11.1
-   ,NAND (1-bit mode),Yes,No
-   ,NAND (8-bit mode),Yes,No
+   ,,NAND (1-bit mode),Yes,No
+   ,,NAND (8-bit mode),Yes,No
    ,GPMC Bootloader Operation,NOR,No,No
-   ,NAND,No,No
+   ,,NAND,No,No
    ,Ethernet Bootloader Operation,,NA,NA
    ,USB Bootloader Operation,Host,No,No
-   ,Device,No,No
-   ,MMCSD Bootloader Operation,SD Card (no UHS),Yes,SDK11.1
-   ,eMMC,Yes,SDK11.1
+   ,,Device,Yes,No
+   ,MMC Bootloader Operation,SD Card,Yes,SDK11.1
+   ,,SD Card (UHS),Yes,SDK11.1
+   ,,eMMC,Yes,SDK11.1
+   ,,eMMC (UHS),Yes,SDK11.1
    ,UART Bootloader Operation,,Yes,SDK11.1
-   Device Configuration,,VTM,Yes,SDK11.1
+   Device Configuration,VTM,,Yes,SDK11.1
    Power Management,Deep Sleep Low Power Mode,,Yes,SDK11.2
    ,Deep Sleep LPM Wakeup Events,RTC Timer,Yes,SDK11.2
-   ,GT Timers,No,No
-   ,WKUP UART,No,No
-   ,I2C,No,No
-   ,I/O Daisy Chain,Yes,No
-   ,USB Connect/Disconnect,No,No
-   ,USB Remote Wakeup,No,No
-   ,Standby Low Power Mode,,SDK11.1,SDK11.2
-   ,Partial I/O Low Power Mode,,SDK11.1,No
+   ,,GT Timers,No,No
+   ,,I/O Daisy Chain,Yes,No
+   ,,I2C,No,No
+   ,,RTC,Yes,No
+   ,,USB Connect/Disconnect,No,No
+   ,,USB Remote Wakeup,Yes,No
+   ,,WKUP UART,No,No
+   ,Standby Low Power Mode,,Yes,SDK11.2
+   ,RTC Only,,SDK12.0,No
+   ,RTC + DDR,,Yes,No
    ,Boot-time OPP configurations,,No,No
-   ,Runtime Power Management,,SDK11.1,No
+   ,Runtime Power Management,,Yes,No
    ,DFS/CPUFreq,,No,No
    ,CPUIdle (A53 WFI),,No,No
    ,CPUIdle (DDR in Self-Refresh),,No,No
    Interprocessor Communication,Mailbox,,Yes,No
-   Memory Controllers,DDR Subsystem (DDRSS),DDR4,No,No
-   ,,LPDDR4,Yes,SDK11.1
-   ,,Inline ECC (1bit err),Yes,SDK11.1
-   ,,Inline ECC (mbit err),Yes,SDK11.1
+   Memory Controllers,DDR Subsystem (DDRSS),DDR4,Yes,Yes
+   ,,LPDDR4,Yes,Yes
+   ,,Inline ECC (1bit err),No,No
+   ,,Inline ECC (mbit err),No,No
    Time Sync,Time Sync Module (CPTS),,Yes,No
    ,Timer Manager,,No,No
    ,Time Sync and Compare Events,,No,No
@@ -87,10 +91,10 @@ The support status is indicated by the following codes:
    ,,EndPoint,Yes,SDK11.1
    ,,TSN,Yes,SDK11.1
    ,,TSN - VLAN,Yes,SDK11.1
-   Universal Serial Bus Subsystem (USBSS),Host 3.1,NA,NA
-   ,,Device 3.1,NA,NA
-   ,,Host 2.0,Yes,SDK12.0
-   ,,Device 2.0,Yes,SDK12.0
+   Universal Serial Bus Subsystem (USBSS),SuperSpeed+ (3.1),Host,NA,NA
+   ,,Device,NA,NA
+   ,High-Speed (2.0),Host,Yes,SDK12.0
+   ,,Device,Yes,SDK12.0
    Memory Interfaces,Flash Subsystem (FSS),,No,No
    ,Quad Serial Peripheral Interface (QSPI),NOR,Yes,No
    ,,NAND,NA,SDK11.2
@@ -101,7 +105,7 @@ The support status is indicated by the following codes:
    ,,NAND,Yes,SDK11.2
    ,,NOR,No,No
    ,,PSRAM,No,SDK11.2
-   ,Error Location Module (ELM),,No,No
+   ,Error Location Module (ELM),,Yes,No
    ,Multimedia Card Secure Digital (MMCSD) Interface,SD Card,Yes,Yes
    ,,eMMC,Yes,Yes
    Industrial & Control Interfaces,Controller Area Network (MCAN) - MAIN domain,CAN,Yes,Yes
@@ -124,14 +128,14 @@ The support status is indicated by the following codes:
    ,,PWM,No,No
    CRC32,,,Yes,No
    RTI(WWDG),,,No,No
-   Voltage and Thermal Management(VTM),,,No,No
+   Voltage and Thermal Management(VTM),,,Yes,No
    Display Subsystem,DISPLAY Parallel Interface (DPI),,Yes,No
    On-Die Temperature sensor,,,Yes,No
-   On-Chip Debug,,,NA,NA
+   On-Chip Debug,,,Yes,Yes
    Crypto Accelerator (DTHEv2),Advanced Encryption Standard (AES),AES-CBC,Yes,SDK11.1
    ,,AES-ECB,Yes,SDK11.1
    ,SHA/MD5 Crypto Hardware-Accelerated Module (SHA/MD5),SHA-256,Yes,SDK11.1
    ,,SHA-512,Yes,SDK11.1
-   ,True Random Number Generator (TRNG),,No,No
-   Board Specifics (AM62L EVM),cc3351 M.2,Wifi,Yes,No
-   ,TPS65214,PMIC,SDK11.1,No
+   ,True Random Number Generator (TRNG),,Yes,No
+   Board Specifics (AM62L EVM),WI-FI,CC3351 (connected via M.2),Yes,No
+   ,PMIC,TPS65214,Yes,No
