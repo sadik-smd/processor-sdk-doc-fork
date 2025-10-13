@@ -167,7 +167,7 @@ The support status is indicated by the following codes:
    Video Processing Unit,,,Yes,NA,No,No
    Image Encoder,JPEG Encoder E5010,,Yes,,,
    On-Die Temperature sensor,,,Yes,NA,No,No
-   On-Chip Debug,,,NA,NA,NA,NA
+   On-Chip Debug,,,Yes,NA,NA,NA
    Crypto Accelerator (SA3UL),Advanced Encryption Standard (AES),AES-CBC,Yes,NA,No,No
    ,,AES-ECB,Yes,NA,No,No
    ,SHA/MD5 Crypto Hardware-Accelerated Module (SHA/MD5),SHA-256,Yes,NA,No,No
