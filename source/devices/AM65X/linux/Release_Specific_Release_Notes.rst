@@ -42,8 +42,8 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 11.02
-=============
+Release 11.02.05.02
+===================
 
 Released November 2025
 
@@ -83,96 +83,46 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 Build Information
 =================
 
-U-Boot
-------
+.. list-table::
+   :header-rows: 1
+   :widths: 15, 30, 30, 30
 
-| Head Commit: a44465cad8a30cbad5e8b22baef59aa7f5151494 TI: dts: arm64: ti: sync dtbs from ti-linux-6.12.y upto 1a86d36433ea
-| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2025.01
-| Tag: 11.02.05
-|
-
-TF-A
-----
-
-| Head Commit: e0c4d3903b382bf34f552af53e6d955fae5283ab Merge changes from topic "xlnx_fix_gen_con_datatype" into integration
-| Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
-| Branch: master
-| Tag: 2.13+
-|
-
-OP-TEE
-------
-
-| Head Commit: a9690ae39995af36a31b7a4f446f27ea0787e3a4 plat-k3: drivers: Add TRNG driver support in AM62L
-| Repo: https://github.com/OP-TEE/optee_os/
-| Branch: master
-| Tag: 4.7+
-|
-
-ti-linux-firmware
------------------
-
-| Head Commit: 0a37dc07b1120127eba73c7196a0b532350b9639 ti-ipc: am62x/am62ax/am62px: Update ipc firmware
-| Repo: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
-| Branch: ti-linux-firmware
-| Tag: 11.02.05
-|
-
-
-Kernel
-------
-.. rubric:: Linux Kernel
-   :name: linux-kernel
-
-| Head Commit: 1a86d36433eac7cef246d41fbd4d2bdd9612253f PENDING: arm64: dts: ti: k3-am62p-j722s-common-main: Change reg value for OLDI TX
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.12.y
-| Tag: 11.02.05
-| use-kernel-config=defconfig
-| config-fragment=kernel/configs/ti_arm64_prune.config
-|
-
-.. rubric:: Real Time (RT) Linux Kernel
-   :name: real-time-rt-linux-kernel
-
-| Head Commit: 1a86d36433eac7cef246d41fbd4d2bdd9612253f PENDING: arm64: dts: ti: k3-am62p-j722s-common-main: Change reg value for OLDI TX
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.12.y
-| Tag: 11.02.05
-| use-kernel-config=defconfig
-| config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
-|
-
-
-Yocto
------
-.. rubric:: meta-ti
-   :name: meta-ti
-
-| Head Commit: f483464c72055cdcb81853e06afc89719e73073f CI/CD Auto-Merger: cicd.scarthgap.202511140456
-| Clone: git://git.yoctoproject.org/meta-ti
-| Branch: scarthgap
-| Release Tag: 11.02.05
-|
-
-.. rubric:: meta-arago
-   :name: meta-arago
-
-| Head Commit: 0d3641074b98f79096d415483402e580318249f2 CI/CD Auto-Merger: cicd.scarthgap.202511140456
-| Clone: git://git.yoctoproject.org/meta-arago
-| Branch: scarthgap
-| Release Tag: 11.02.05
-|
-
-
-.. rubric:: meta-tisdk
-
-| Head Commit: 	13c9c57b790a940c8f7b8b6a5d634ef04e3c7f03 meta-ti-foundational: recipes-core: include ti-lvgl-demo
-| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
-| Branch: scarthgap
-| Release Tag:
-|
+   * - Component
+     - Branch Info
+     - Tag Info
+     - Config Info
+   * - U-Boot
+     - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
+     - `11.02.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.05>`__
+     - :ref:`Build Config <Build-U-Boot-label>`
+   * - TF-A
+     - `master <https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/+/refs/heads/master>`__
+     - `v2.13+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=11.02.05#n3>`__
+     -
+   * - OPTEE
+     - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
+     - `4.7.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=11.02.05#n1>`__
+     - |__OPTEE_PLATFORM_FLAVOR__|
+   * - Linux Firmware
+     - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__
+     - `11.02.05 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=11.02.05>`__
+     -
+   * - Linux Kernel
+     - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
+     - `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/k3/defconfig?h=11.02.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/k3/defconfig?h=11.02.05>`__
+   * - meta-ti
+     - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
+     - `11.02.05 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.05>`__
+     - |__SDK_BUILD_MACHINE__|
+   * - meta-arago
+     - `scarthgap <https://git.yoctoproject.org/meta-arago/log/?h=scarthgap>`__
+     - `11.02.05 <https://git.yoctoproject.org/meta-arago/tag/?h=11.02.05>`__
+     -
+   * - meta-tisdk
+     - `scarthgap <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
+     - `11.02.05.02 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.02.05.02>`__
+     -
 
 
 Installation and Usage
