@@ -43,8 +43,8 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 11.02
-=============
+Release 11.02.05.02
+===================
 
 Released November 2025
 
@@ -88,79 +88,35 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 Build Information
 =================
 
-U-Boot
-------
+.. list-table::
+   :header-rows: 1
+   :widths: 15, 30, 30, 30
 
-| Head Commit: a44465cad8a30cbad5e8b22baef59aa7f5151494 TI: dts: arm64: ti: sync dtbs from ti-linux-6.12.y upto 1a86d36433ea
-| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2025.01
-| Tag: 11.02.05
-|
+   * - Component
+     - Branch Info
+     - Tag Info
+     - Config Info
+   * - U-Boot
+     - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
+     - `11.02.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.05>`__
+     - :ref:`Build Config <Build-U-Boot-label>`
+   * - Linux Kernel
+     - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
+     - non-RT- `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__ , RT- `11.02.05-rt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05-rt>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/ti33x/defconfig?h=11.02.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/ti33x/defconfig?h=11.02.05>`__
+   * - meta-ti
+     - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
+     - `11.02.05 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.05>`__
+     - |__SDK_BUILD_MACHINE__|
+   * - meta-arago
+     - `scarthgap <https://git.yoctoproject.org/meta-arago/log/?h=scarthgap>`__
+     - `11.02.05 <https://git.yoctoproject.org/meta-arago/tag/?h=11.02.05>`__
+     -
+   * - meta-tisdk
+     - `scarthgap <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
+     - `11.02.05.02 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.02.05.02>`__
+     -
 
-.. _release-specific-build-information-kernel:
-
-Kernel
-------
-
-.. _release-specific-build-information-linux-kernel:
-
-.. rubric:: Linux Kernel
-   :name: linux-kernel
-
-| Head Commit: 1a86d36433eac7cef246d41fbd4d2bdd9612253f PENDING: arm64: dts: ti: k3-am62p-j722s-common-main: Change reg value for OLDI TX
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.1.y
-| Tag: 11.02.05
-|
-
-.. _release-specific-build-information-rt-linux-kernel:
-
-.. rubric:: Real Time (RT) Linux Kernel
-   :name: real-time-rt-linux-kernel
-
-| There will be no am3* RT Linux kernel support this release
-|
-
-.. _release-specific-generic-kernel-release-notes:
-
-.. rubric:: Generic Kernel Release Notes
-   :name: generic-kernel-release-notes
-
-| Generic kernel release notes from kernelnewbies.org can be found at:
-  http://kernelnewbies.org/Linux_6.1
-| Archived versions can be found at:
-  http://kernelnewbies.org/LinuxVersions
-
-|
-
-Yocto
------
-.. rubric:: meta-ti
-   :name: meta-ti
-
-| Head Commit: f483464c72055cdcb81853e06afc89719e73073f CI/CD Auto-Merger: cicd.scarthgap.202511140456
-| Clone: git://git.yoctoproject.org/meta-ti
-| Branch: scarthgap
-| Release Tag: 11.02.05
-|
-
-.. rubric:: meta-arago
-   :name: meta-arago
-
-| Head Commit: 0d3641074b98f79096d415483402e580318249f2 CI/CD Auto-Merger: cicd.scarthgap.202511140456
-| Clone: git://git.yoctoproject.org/meta-arago
-| Branch: scarthgap
-| Release Tag: 11.02.05
-|
-
-.. rubric:: meta-tisdk
-   :name: meta-tisdk
-
-| Head Commit: 	13c9c57b790a940c8f7b8b6a5d634ef04e3c7f03 meta-ti-foundational: recipes-core: include ti-lvgl-demo
-| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
-| Branch: scarthgap
-| Release Tag:
-|
 
 Issues Tracker
 ==============
