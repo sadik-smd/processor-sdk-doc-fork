@@ -4,16 +4,17 @@
 Yocto Layer Configuration
 #########################
 
-Processor SDK uses the following oe-layersetup configs to configure the
-Yocto build. One of these file paths is specified by the ``<config>`` argument
-in the following command:
+Processor SDK uses oe-layersetup configuration files to initialize the
+Yocto build environment. Configure your build with the following command:
 
 .. code-block:: console
 
    $ ./oe-layertool-setup.sh -f <config>
 
-The following Configuration files are located in the :file:`configs/processor-sdk`
-directory of the `oe-layersetup git repository <https://git.ti.com/cgit/arago-project/oe-layersetup/>`__.
+Replace ``<config>`` with one of the configuration files listed below.
+
+The `oe-layersetup git repository <https://git.ti.com/cgit/arago-project/oe-layersetup/>`__
+contains the following configuration files in the :file:`configs/processor-sdk` directory.
 
 .. list-table:: Yocto Layer Configuration
    :widths: 50 50 30
