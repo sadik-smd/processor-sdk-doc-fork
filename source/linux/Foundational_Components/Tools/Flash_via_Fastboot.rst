@@ -29,7 +29,7 @@ Installing Snagfactory
 
 .. note::
 
-   At the time of 11.1 release, the corresponding Snagfactory version was v2.3.
+   At the time of 11.2 release, the corresponding Snagfactory version was v2.5.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62DX')
 
@@ -101,6 +101,12 @@ in :file:`Rules.make` file present in the top level of Linux SDK Installer.
       UBOOT_MACHINE_R5=am62dx_evm_r5_defconfig am62x_r5_usbdfu.config
 
       BOOT_MACHINE_A53=am62dx_evm_a53_defconfig am62x_a53_usbdfu.config am6x_a53_snagfactory.config
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. code-block:: make
+
+      BOOT_MACHINE_A53=am62lx_evm_defconfig am62x_a53_usbdfu.config am6x_a53_snagfactory.config
 
 Generate the bootloader images using top-level makefile by running following
 commands on the terminal from the top-level of the Linux SDK installer.
@@ -184,6 +190,36 @@ the SnagFactory GUI tool.
 
 * Once you load the YAML configuration file, the SnagFactory GUI tool will flash the device with
   the specified configuration.
+
+The following table outline the board names for snagfactory yaml configuration.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Evaluation Board
+     - Family
+     - board
+   * - am62pxx-evm
+     - am6x
+     - am62p
+   * - am62xx-evm
+     - am6x
+     - am625
+   * - am62lxx-evm
+     - am62lx
+     - am62l3
+   * - am62xx-lp-evm
+     - am6x
+     - am625
+   * - am62sip-evm
+     - am6x
+     - am625
+   * - am64xx-evm
+     - am6x
+     - am6442
+   * - am62dxx-evm
+     - am6x
+     - am62d2
 
 The example configuration files for **emmc** and **ospi-nand** and **ospi-nor** are as follows.
 
@@ -300,6 +336,48 @@ For reference, the  :file:`emmc.yaml` file for **am62p** platform can be as foll
            - name: rootfs
              size: 1G
        - task: reset
+       - task: flash
+         args:
+           - image: "<path_to_flash_binaries>/tiboot3.bin"
+             image-offset: 0x0
+             part: "hwpart 1"
+           - image: "<path_to_flash_binaries>/tispl.bin"
+             image-offset: 0x80000
+             part: "hwpart 1"
+           - image: "<path_to_flash_binaries>/u-boot.img"
+             image-offset: 0x280000
+             part: "hwpart 1"
+           - image: "<path_to_flash_binaries>/rootfs.ext4"
+             part: "rootfs"
+
+For reference, the  :file:`emmc.yaml` file for **am62l** platform can be as follows:
+
+.. code-block:: text
+
+   boards:
+     "0451:6165": "am62l3"
+
+   soc-models:
+     am62l3-firmware:
+         tiboot3:
+           path: "<path_to_boot_binaries>/tiboot3.bin"
+         tispl:
+           path: "<path_to_boot_binaries>/tispl.bin"
+         u-boot:
+           path: "<path_to_boot_binaries>/u-boot.img"
+
+     am62l3-tasks:
+       - target-device: mmc0
+         fb-buffer-addr: 0x82000000
+         fb-buffer-size: 0x7000000
+
+       - task: gpt
+         args:
+           - name: rootfs
+             size: 15G
+
+       - task: reset
+
        - task: flash
          args:
            - image: "<path_to_flash_binaries>/tiboot3.bin"
