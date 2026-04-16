@@ -17,7 +17,7 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
+      image: ghcr.io/sadik-smd/processor-sdk-doc-fork:latest
       options: --entrypoint /bin/bash
     permissions:
       contents: read
@@ -36,7 +36,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
+      image: ghcr.io/sadik-smd/processor-sdk-doc-fork:latest
       options: --entrypoint /bin/bash
     permissions:
       contents: read
