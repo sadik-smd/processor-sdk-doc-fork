@@ -1,0 +1,640 @@
+digraph distro_compatibility_matrix {
+    rankdir=LR;
+    graph [splines=ortho, nodesep=0.4, ranksep=1.0,
+           fontname="Arial", pad=0.6, bgcolor="white"];
+    node  [fontname="Arial", fontsize=7, margin=0];
+    edge  [fontname="Arial", fontsize=9, penwidth=1.5, arrowsize=0.8];
+
+    subgraph cluster_outer {
+        label="TI Processor SDK — Distribution Compatibility Matrix";
+        style="filled,bold";
+        fillcolor="#F5F5F5";
+        color="#1A237E";
+        penwidth=4;
+        fontsize=18;
+        fontcolor="#1A237E";
+        fontname="Arial Bold";
+
+        // ── Legend ──────────────────────────────────────────────────
+        legend [
+            shape=none,
+            label=<
+              <TABLE BORDER="2" CELLBORDER="0" CELLSPACING="3"
+                     CELLPADDING="5" BGCOLOR="#FAFAFA"
+                     COLOR="#424242" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="3" BGCOLOR="#37474F"
+                      STYLE="ROUNDED" WIDTH="280">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Legend — Distributions</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#1565C0" POINT-SIZE="10"><B>Yocto Linux</B></FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#616161" POINT-SIZE="9">TI reference distro</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#AD1457" STYLE="ROUNDED" WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#AD1457" POINT-SIZE="10"><B>Android</B></FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#616161" POINT-SIZE="9">AOSP-based builds</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#2E7D32" STYLE="ROUNDED" WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#2E7D32" POINT-SIZE="10"><B>Debian</B></FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#616161" POINT-SIZE="9">Armbian / Debian</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#E65100" STYLE="ROUNDED" WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#E65100" POINT-SIZE="10"><B>Buildroot</B></FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#616161" POINT-SIZE="9">Minimal embedded FS</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#6A1B9A" STYLE="ROUNDED" WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#6A1B9A" POINT-SIZE="10"><B>EdgeAI</B></FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="120">
+                    <FONT COLOR="#616161" POINT-SIZE="9">AI/ML inference SDK</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // ── Distro header nodes ──────────────────────────────────────
+        hdr_linux [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="0" CELLSPACING="0"
+                     CELLPADDING="8" BGCOLOR="#1565C0"
+                     COLOR="#0D47A1" STYLE="ROUNDED">
+                <TR>
+                  <TD WIDTH="100">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>Yocto Linux</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        hdr_android [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="0" CELLSPACING="0"
+                     CELLPADDING="8" BGCOLOR="#AD1457"
+                     COLOR="#880E4F" STYLE="ROUNDED">
+                <TR>
+                  <TD WIDTH="100">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>Android</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        hdr_debian [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="0" CELLSPACING="0"
+                     CELLPADDING="8" BGCOLOR="#2E7D32"
+                     COLOR="#1B5E20" STYLE="ROUNDED">
+                <TR>
+                  <TD WIDTH="100">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>Debian</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        hdr_buildroot [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="0" CELLSPACING="0"
+                     CELLPADDING="8" BGCOLOR="#E65100"
+                     COLOR="#BF360C" STYLE="ROUNDED">
+                <TR>
+                  <TD WIDTH="100">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>Buildroot</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        hdr_edgeai [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="0" CELLSPACING="0"
+                     CELLPADDING="8" BGCOLOR="#6A1B9A"
+                     COLOR="#4A148C" STYLE="ROUNDED">
+                <TR>
+                  <TD WIDTH="100">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>EdgeAI</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // ── Devices (rows) ───────────────────────────────────────────
+
+        // AM62X — Linux, Android, Debian, Buildroot
+        dev_AM62X [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E3F2FD"
+                     COLOR="#0D47A1" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#0D47A1" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM62X</B></FONT>
+                    <FONT COLOR="#B3E5FC" POINT-SIZE="9">  (Sitara MPU — General Purpose)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62X Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#AD1457" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-android/esd/AM62X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62X Android SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Android</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#2E7D32" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62X Debian SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Debian</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#E65100" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62X Buildroot SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Buildroot</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM62LX — Linux, Debian, Buildroot
+        dev_AM62LX [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E3F2FD"
+                     COLOR="#0D47A1" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#0D47A1" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM62LX</B></FONT>
+                    <FONT COLOR="#B3E5FC" POINT-SIZE="9">  (Sitara MPU — Low Power)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62LX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62LX Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#2E7D32" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62LX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62LX Debian SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Debian</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#E65100" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62LX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62LX Buildroot SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Buildroot</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM62AX — Linux, EdgeAI
+        dev_AM62AX [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E3F2FD"
+                     COLOR="#0D47A1" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#0D47A1" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM62AX</B></FONT>
+                    <FONT COLOR="#B3E5FC" POINT-SIZE="9">  (Sitara MPU — Analytics)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62AX Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#6A1B9A" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62AX EdgeAI SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; EdgeAI</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM62PX — Linux, Android, Debian
+        dev_AM62PX [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E3F2FD"
+                     COLOR="#0D47A1" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#0D47A1" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM62PX</B></FONT>
+                    <FONT COLOR="#B3E5FC" POINT-SIZE="9">  (Sitara MPU — Premium)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62PX Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#AD1457" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-android/esd/AM62PX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62PX Android SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Android</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#2E7D32" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62PX Debian SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Debian</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM62DX — Linux
+        dev_AM62DX [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E3F2FD"
+                     COLOR="#0D47A1" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#0D47A1" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM62DX</B></FONT>
+                    <FONT COLOR="#B3E5FC" POINT-SIZE="9">  (Sitara MPU — Display)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM62DX/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM62DX Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM64X — Linux, Debian
+        dev_AM64X [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E8EAF6"
+                     COLOR="#283593" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#283593" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM64X</B></FONT>
+                    <FONT COLOR="#C5CAE9" POINT-SIZE="9">  (Sitara MPU — Industrial)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM64X Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#2E7D32" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM64X Debian SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Debian</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM65X — Linux only
+        dev_AM65X [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E8EAF6"
+                     COLOR="#283593" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#283593" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM65X</B></FONT>
+                    <FONT COLOR="#C5CAE9" POINT-SIZE="9">  (Sitara MPU — Industrial)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM65X Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM67A — Android, Linux
+        dev_AM67A [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E8EAF6"
+                     COLOR="#283593" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#283593" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM67A / AM67</B></FONT>
+                    <FONT COLOR="#C5CAE9" POINT-SIZE="9">  (Jacinto — Edge AI / Vision)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM67A/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM67A Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#AD1457" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-android/esd/AM67A/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM67A Android SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Android</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM68 / AM68A / AM69 / AM69A — Linux
+        dev_AM68_69 [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#E8EAF6"
+                     COLOR="#283593" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#283593" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM68 / AM68A / AM69 / AM69A</B></FONT>
+                    <FONT COLOR="#C5CAE9" POINT-SIZE="9">  (Jacinto — High-Performance Vision)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM68/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="AM68/AM69 Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // J7_Family (J721E, J7200, J721S2, J784S4, J722S, J742S2, TDA4VM) — Linux, EdgeAI
+        dev_J7 [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#FFF3E0"
+                     COLOR="#E65100" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#BF360C" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>J7 Family</B></FONT>
+                    <FONT COLOR="#FFCCBC" POINT-SIZE="9">  (J721E / J7200 / J721S2 / J784S4 / J722S / J742S2 / TDA4VM)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/J721E/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="J7 Family Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#AD1457" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-android/esd/J721E/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="J7 Family Android SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Android</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#6A1B9A" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/J721E/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="J7 Family EdgeAI SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; EdgeAI</B></FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // DRA821A — Linux only
+        dev_DRA821A [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#FFF3E0"
+                     COLOR="#E65100" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#BF360C" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>DRA821A</B></FONT>
+                    <FONT COLOR="#FFCCBC" POINT-SIZE="9">  (Jacinto — Automotive)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1565C0" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/DRA821A/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="DRA821A Yocto Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        // AM335X / AM437X / AM57X — Legacy Linux only
+        dev_legacy [
+            shape=none,
+            label=<
+              <TABLE BORDER="3" CELLBORDER="1" CELLSPACING="2"
+                     CELLPADDING="6" BGCOLOR="#ECEFF1"
+                     COLOR="#546E7A" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="5" BGCOLOR="#546E7A" STYLE="ROUNDED" WIDTH="540">
+                    <FONT COLOR="white" POINT-SIZE="12"><B>AM335X / AM437X / AM57X</B></FONT>
+                    <FONT COLOR="#CFD8DC" POINT-SIZE="9">  (Legacy Sitara MPU — Maintenance Mode)</FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#607D8B" STYLE="ROUNDED" WIDTH="100" HEIGHT="30"
+                      HREF="https://software-dl.ti.com/processor-sdk-linux/esd/AM335X/latest/exports/docs/index.html"
+                      TARGET="_blank" TOOLTIP="Legacy Linux SDK">
+                    <FONT COLOR="white" POINT-SIZE="10"><B>&#10003; Linux</B></FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Android</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Debian</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; Buildroot</FONT>
+                  </TD>
+                  <TD BGCOLOR="#BDBDBD" STYLE="ROUNDED" WIDTH="100" HEIGHT="30">
+                    <FONT COLOR="#757575" POINT-SIZE="10">&#10007; EdgeAI</FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+    }
+
+    // ── Vertical layout ordering (invisible edges) ───────────────────
+    legend      -> dev_AM62X   [style=invis, weight=100];
+    dev_AM62X   -> dev_AM62LX  [style=invis, weight=100];
+    dev_AM62LX  -> dev_AM62AX  [style=invis, weight=100];
+    dev_AM62AX  -> dev_AM62PX  [style=invis, weight=100];
+    dev_AM62PX  -> dev_AM62DX  [style=invis, weight=100];
+    dev_AM62DX  -> dev_AM64X   [style=invis, weight=100];
+    dev_AM64X   -> dev_AM65X   [style=invis, weight=100];
+    dev_AM65X   -> dev_AM67A   [style=invis, weight=100];
+    dev_AM67A   -> dev_AM68_69 [style=invis, weight=100];
+    dev_AM68_69 -> dev_J7      [style=invis, weight=100];
+    dev_J7      -> dev_DRA821A [style=invis, weight=100];
+    dev_DRA821A -> dev_legacy  [style=invis, weight=100];
+}

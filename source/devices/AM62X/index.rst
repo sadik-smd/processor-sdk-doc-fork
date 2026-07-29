@@ -8,6 +8,8 @@ Processor SDK Linux Software Developer's Guide
 
 .. include:: /linux/Overview/_Processor_SDK_Linux_Software_Developers_Guide.rst
 
+.. include:: /linux/Overview_Distributions.rst
+
 .. toctree::
    :maxdepth: 5
    :hidden:
@@ -17,6 +19,7 @@ Processor SDK Linux Software Developer's Guide
    /devices/AM62X/linux/Release_Specific
    /linux/Foundational_Components
    /linux/How_to_Guides
+   /linux/Distributions
    /devices/AM62X/index_RTOS
    /linux/Demo_User_Guides/index_Demos
    /boards/index

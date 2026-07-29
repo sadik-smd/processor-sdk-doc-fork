@@ -14,6 +14,7 @@ devices/AM62X/linux/Linux_Performance_Guide
 devices/AM62X/linux/RT_Linux_Performance_Guide
 devices/AM62X/linux/Release_Specific_Supported_Platforms_and_Versions
 
+linux/Overview_Distributions
 linux/Overview_Building_the_SDK
 linux/Overview/Top_Level_Makefile
 linux/Overview_Directory_Structure_Overview
@@ -181,6 +182,17 @@ linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides/FAQ/How_to_work_with_SBOM
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
+
+linux/Distributions
+linux/Distributions_Yocto
+linux/Distributions_Buildroot
+buildroot/Building_Buildroot_Image
+buildroot/Building_Buildroot_Packages
+linux/Distributions_Debian
+debian/Building_Debian_Image
+debian/Building_Debian_Packages
+debian/How_to_Guides/index_How_to_Guides
+debian/Demo_User_Guides/index_Demos
 
 linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/TI_Apps_Launcher_User_Guide
