@@ -197,31 +197,31 @@ Buildroot (Buildroot External TI)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
-     - `12.00.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.00.00.07>`__
-     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L60>`__
+     - `12.01.00.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.01.00.05>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L61>`__
    * - ATF
      - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
-     - `v2.14+ <https://github.com/ARM-software/arm-trusted-firmware/commit/76500ceaeefcda967d8a1f4e30bb04f9fe0425a2>`__
+     - `v2.14+ <https://github.com/ARM-software/arm-trusted-firmware/commit/da738d5eae93af342fdc4995dd3c05acb4c9d757>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L40>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.9.0+ <https://github.com/OP-TEE/optee_os/commit/f2a7ad0638aeff5243593b33cc56ad064cae7615>`__
-     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L47>`__
+     - `4.9.0+ <https://github.com/OP-TEE/optee_os/commit/753afbbee1682f5d16fd30e87b31058a4fd4f4b8>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L48>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `12.00.00.07 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.00.00.07>`__
+     - `12.01.00.05 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.01.00.05>`__
      - `Git Clone <https://github.com/buildroot/buildroot/blob/1a17185606161d7a03198e249c02bdc2bdc972d0/boot/ti-k3-boot-firmware/ti-k3-boot-firmware.mk#L8>`__
    * - Linux Kernel
      - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
-     - `12.00.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.00.00.07>`__
-     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L15>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_rt_defconfig#L15>`__
+     - `12.01.00.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.01.00.05>`__
+     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_defconfig#L16>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62x_sk_rt_defconfig#L16>`__
    * - Buildroot External TI
      - `main <https://github.com/TexasInstruments/buildroot-external-TI/tree/main>`__
-     - `12.00.00.07.04 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/12.00.00.07.04>`__
+     - `12.01.00.05.03 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/12.01.00.05.03>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/configs>`__, `Board <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/board/ti/am62x-sk>`__
    * - Buildroot
-     - `2026.02.x <https://github.com/buildroot/buildroot/tree/2026.02.x>`__
-     - `2026.02 <https://github.com/buildroot/buildroot/releases/tag/2026.02>`__
+     - `2026.05.x <https://github.com/buildroot/buildroot/tree/2026.05.x>`__
+     - `2026.05 <https://github.com/buildroot/buildroot/releases/tag/2026.05>`__
      -
 
 Issues Tracker
